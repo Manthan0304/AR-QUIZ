@@ -11,6 +11,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.example.arlearner.ui.navigation.ALPHABETSCREEN
+import com.example.arlearner.ui.navigation.ARSCREEN
+import com.example.arlearner.ui.navigation.HOMESCREEN
+import com.example.arlearner.ui.navigation.QUIZSCREEN
+import com.example.arlearner.ui.screens.alphabetscreen
+import com.example.arlearner.ui.screens.homscreen
 import com.example.arlearner.ui.theme.ARlearnerTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +30,30 @@ class MainActivity : ComponentActivity() {
         setContent {
             ARlearnerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = HOMESCREEN,
                         modifier = Modifier.padding(innerPadding)
-                    )
+                    ) {
+                        composable<HOMESCREEN> {
+                            homscreen(navController)
+                        }
+
+                        composable<ARSCREEN> {
+                            val alphabet = it.toRoute<ARSCREEN>().model
+                        }
+
+                        composable<QUIZSCREEN> {
+
+                        }
+
+                        composable<ALPHABETSCREEN> {
+                            alphabetscreen(navController)
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ARlearnerTheme {
-        Greeting("Android")
     }
 }
