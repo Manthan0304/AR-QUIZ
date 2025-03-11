@@ -37,7 +37,7 @@ fun alphabetscreen(navController: NavController) {
     )
     Column {
         Box(modifier = Modifier.height(60.dp)) {
-            Text(text = "Alphabets", fontSize = 24.sp, modifier = Modifier.align(Alignment.Center))
+            Text(text = "Alphabets", fontSize = 24.sp, modifier = Modifier.align(Alignment.Center),color = Color.Black)
         }
         FlowRow(
             modifier = Modifier

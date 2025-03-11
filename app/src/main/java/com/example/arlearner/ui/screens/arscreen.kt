@@ -9,7 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.codewithfk.arlearner.util.Utils
 import com.example.arlearner.ui.util.Utils
 import com.google.ar.core.Config
 import com.google.ar.core.Frame
@@ -96,7 +95,7 @@ fun ARscreen(navController: NavController, model: String) {
                             materialLoader = materialloader,
                             modelInstance = modelInstance,
                             anchor = it,
-                            model = model
+                            model = Utils.getModelForAlphabet(model)
                         )
                         childnodes += nodemodel
                     }

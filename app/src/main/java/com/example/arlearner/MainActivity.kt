@@ -1,9 +1,11 @@
 package com.example.arlearner
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -19,11 +21,14 @@ import com.example.arlearner.ui.navigation.ALPHABETSCREEN
 import com.example.arlearner.ui.navigation.ARSCREEN
 import com.example.arlearner.ui.navigation.HOMESCREEN
 import com.example.arlearner.ui.navigation.QUIZSCREEN
+import com.example.arlearner.ui.screens.ARscreen
 import com.example.arlearner.ui.screens.alphabetscreen
 import com.example.arlearner.ui.screens.homscreen
+import com.example.arlearner.ui.screens.quizscreen
 import com.example.arlearner.ui.theme.ARlearnerTheme
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,10 +47,11 @@ class MainActivity : ComponentActivity() {
 
                         composable<ARSCREEN> {
                             val alphabet = it.toRoute<ARSCREEN>().model
+                            ARscreen(navController, alphabet)
                         }
 
                         composable<QUIZSCREEN> {
-
+                            quizscreen(navController)
                         }
 
                         composable<ALPHABETSCREEN> {
