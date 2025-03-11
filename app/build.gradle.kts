@@ -60,4 +60,9 @@ dependencies {
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.arsceneview)
+    implementation ("com.google.ar:core:1.48.0")
+    implementation (libs.sceneview)
+
+
 }
