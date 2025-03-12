@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable<ALPHABETSCREEN> {
-                            alphabetscreen(navController)
+                            alphabetscreen(navController) 
                         }
                     }
                 }
